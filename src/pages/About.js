@@ -1,19 +1,18 @@
 import React from 'react';
-import logo from '../logo.svg';
+
+import { useSelector } from 'react-redux';
 
 import { Link } from 'react-router-dom'
 
 function About() {
+	const itens = useSelector( state => state.itens);
 	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/About.js</code> and save to reload.
-				</p>
-				<Link className="App-link" to="/">Ir para a página Home \o/</Link>
-			</header>
-		</div>
+		<>
+			<ul>
+				{itens.map( item => <li key={item}>{item}</li>)}
+			</ul>
+			<Link className="App-link" to="/">Ir para a página Home \o/</Link>
+		</>
 	);
 }
 
